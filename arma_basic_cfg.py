@@ -1,14 +1,30 @@
 
+class BasicCfg:
+    
+    def __init__(self, maxPacketSize, uploadSpeed, socket_init, socket_min):
+        self.maxPacketSize = 1400
+        self.uploadSpeed = uploadSpeed
+        self.socket_int = socket_init
+        self.socket_min = socket_min
+
+    def mbits_to_bits (self):
+        arma_bits = 10000000 * uploadSpeed
+        return arma_bits
+        
+    def mbits_to_bytes(self):
+        arma_bytes = 125000 * uploadSpeed
+        return  arma_bytes
+    
+
+
+
 socket_max = int(input("What is the server's Max Upload speed in megabit/s: \n "))
 socket_init = int(input("Server initial bandwidth recommended 10-25mbit\n"))
 socket_min = int(input("What is the slowest clients download speed in megabit/s:\n "))
 
-def mbits_to_bits (mbits):
-    return 10000000 * mbits
-    pass
 
-def mbits_to_bytes(mbits):
-    return 125000 * mbits
+
+
 
 server_socket_max = mbits_to_bytes(socket_max)
 server_socket_init = mbits_to_bytes(socket_init)
