@@ -14,45 +14,41 @@ class BasicCFG:
         self.socket_int = socket_init
         self.socket_min = socket_min
         self.maxPacketSize = maxPacketSize
-
+        # self.mbits_to_bytes = mbits_to_bytes
+        # self.mbits_to_bits=  mbits_to_bits
 
     def mbits_to_bits (self, uploadSpeed):
         bits = 10000000 * uploadSpeed
         return bits
-        
+
     def mbits_to_bytes(self,uploadSpeed):
         bytes = 125000 * uploadSpeed
         return  bytes
-                                        
-
-    def mbits_to_kbits(self, upload): 
-        kbits= 000 * uploadSpeed                #TODO fix the conversion and math 
-        return kbits
 
     def print_arma_arma_cfg(self):
         """print_arma_arma_cfg [Writes the Server basic.cfg]
         """        
-        cfg_perams=[]                           #TODO change to dictinary  and fix logic 
-        server_socket_max = self.mbits_to_bytes(self.uploadSpeed)
-        print(server_socket_max)
-        server_socket_init = self.mbits_to_bytes(self.socket_int)
-        server_socket_min = self.mbits_to_bytes(self.socket_min)
-        global_min_bandwith = self.mbits_to_bits(self.uploadSpeed)
-        cfg_perams = [ server_socket_init,server_socket_min, server_socket_max, global_min_bandwith]
-        print(cfg_perams)
+        cfg_dict = {
+            "maxPacketSize_Sockets": self.maxPacketSize,
+            "initBandwidth_Sockets": self.mbits_to_bytes(self.socket_int),
+            "MinBandwidth_Sockets": self.mbits_to_bytes(self.socket_min),
+            "MaxBandwidth_Sockets": self.mbits_to_bytes(self.uploadSpeed),
+            "MinBandwidth_global": self.mbits_to_bits(self.uploadSpeed),
+            "MaxBandwidth_global": self.mbits_to_bytes(self.uploadSpeed)
+        }
+
         arma_cfg = f"""
-//basic.cfg
 class sockets
 {{
-
-    initBandwidth = {cfg_perams[0]}; // {cfg_perams[0]}
-    MinBandwidth =  {cfg_perams[1]}; //(64 kbit) 
-    MaxBandwidth =  {cfg_perams[2]}; //(16 Mbit) 250x minBandwith  
+    maxPacketSize = {cfg_dict.get("maxPacketSize_Sockets")}
+    initBandwidth = {cfg_dict.get("initBandwidth")}; // {int(cfg_dict.get("initBandwidth")) / 125000 }
+    MinBandwidth =  {cfg_dict.get("MinBandwidth_Sockets")}; //(64 kbit) 
+    MaxBandwidth =  {cfg_dict.get("MaxBandwidth_Sockets")}; //(16 Mbit) 250x minBandwith  
 }};
 
 
-MinBandwidth = {cfg_perams[3]};
-// MaxBandwidth = 104857600;   // Broken do not use
+MinBandwidth = {cfg_dict.get("MinBandwidth_global")};
+// MaxBandwidth = {cfg_dict.get("MaxBandwidth_global")};   // Broken do not use
 
 MaxMsgSend = 2048;	        	// Maximum number of messages that can be sent in one simulation cycle. Increasing this value can decrease lag on high upload bandwidth servers. Default: 128
 MaxSizeGuaranteed = 512;		// Maximum size of guaranteed packet in bytes (without headers). Small messages are packed to larger frames. Guaranteed messages are used for non-repetitive events like shooting. Default: 512
