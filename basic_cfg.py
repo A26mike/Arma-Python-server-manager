@@ -1,42 +1,57 @@
-class ArmaServer:
-    """uploadSpeed, socket_init, socket_min, maxPacketSize"""
-    def __init__(self, server_name, uploadSpeed, socket_init, socket_min, maxPacketSize = 1400):
+class BasicCFG:
+    """BasicCFG [summary]
+
+        Args:
+            uploadSpeed ([int]): [In MB/s]
+            socket_init ([int]): [description]
+            socket_min ([int]): [description]
+            maxPacketSize (int, optional): [ISP MTU settings ]. Defaults to 1400.
+    """
+
+    def __init__(self, uploadSpeed, socket_init, socket_min, maxPacketSize = 1400):
+
         self.uploadSpeed = uploadSpeed
         self.socket_int = socket_init
         self.socket_min = socket_min
         self.maxPacketSize = maxPacketSize
-        self.server_name = server_name
 
 
     def mbits_to_bits (self, uploadSpeed):
-        arma_bits = 10000000 * uploadSpeed
-        return arma_bits
+        bits = 10000000 * uploadSpeed
+        return bits
         
     def mbits_to_bytes(self,uploadSpeed):
-        arma_bytes = 125000 * uploadSpeed
-        return  arma_bytes
+        bytes = 125000 * uploadSpeed
+        return  bytes
+                                        
+
+    def mbits_to_kbits(self, upload): 
+        kbits= 000 * uploadSpeed                #TODO fix the conversion and math 
+        return kbits
 
     def print_arma_arma_cfg(self):
-        testlist=[]
+        """print_arma_arma_cfg [Writes the Server basic.cfg]
+        """        
+        cfg_perams=[]                           #TODO change to dictinary  and fix logic 
         server_socket_max = self.mbits_to_bytes(self.uploadSpeed)
         print(server_socket_max)
         server_socket_init = self.mbits_to_bytes(self.socket_int)
         server_socket_min = self.mbits_to_bytes(self.socket_min)
         global_min_bandwith = self.mbits_to_bits(self.uploadSpeed)
-        testlist = [ server_socket_init,server_socket_min, server_socket_max, global_min_bandwith]
-        print(testlist)
+        cfg_perams = [ server_socket_init,server_socket_min, server_socket_max, global_min_bandwith]
+        print(cfg_perams)
         arma_cfg = f"""
 //basic.cfg
 class sockets
 {{
 
-    initBandwidth = {testlist[0]}; // (256 kbit) 4x minbandwith in socket class .
-    MinBandwidth =  {testlist[1]}; //(64 kbit) 
-    MaxBandwidth =  {testlist[2]}; //(16 Mbit) 250x minBandwith  
+    initBandwidth = {cfg_perams[0]}; // {cfg_perams[0]}
+    MinBandwidth =  {cfg_perams[1]}; //(64 kbit) 
+    MaxBandwidth =  {cfg_perams[2]}; //(16 Mbit) 250x minBandwith  
 }};
 
 
-MinBandwidth = {testlist[3]};
+MinBandwidth = {cfg_perams[3]};
 // MaxBandwidth = 104857600;   // Broken do not use
 
 MaxMsgSend = 2048;	        	// Maximum number of messages that can be sent in one simulation cycle. Increasing this value can decrease lag on high upload bandwidth servers. Default: 128
@@ -50,12 +65,11 @@ MaxCustomFileSize = 0;			// (bytes) Users with custom face or custom sound large
 
 
 """
-        f = open("basic3.cfg", "w")
+        f = open("basic.cfg", "w")
         f.write(arma_cfg)
         f.close()
 
 
 
-test = ArmaServer("Pub1", 250,5,100)
-test.print_arma_arma_cfg()
+
 
