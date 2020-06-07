@@ -1,5 +1,5 @@
 class BasicCFG:
-    """BasicCFG [summary]
+    """BasicCFG [CFG Calculator for undocumented ]
 
         Args:
             uploadSpeed ([int]): [In MB/s]
@@ -9,13 +9,10 @@ class BasicCFG:
     """
 
     def __init__(self, uploadSpeed, socket_init, socket_min, maxPacketSize = 1400):
-
+        self.maxPacketSize = maxPacketSize
         self.uploadSpeed = uploadSpeed
         self.socket_int = socket_init
         self.socket_min = socket_min
-        self.maxPacketSize = maxPacketSize
-        # self.mbits_to_bytes = mbits_to_bytes
-        # self.mbits_to_bits=  mbits_to_bits
 
     def mbits_to_bits (self, uploadSpeed):
         bits = 10000000 * uploadSpeed
@@ -24,13 +21,11 @@ class BasicCFG:
     def mbits_to_bytes(self,uploadSpeed):
         bytes = 125000 * uploadSpeed
         return  bytes
-
-    def print_arma_arma_cfg(self):
+    
+    def print_arma_cfg(self):
         """print_arma_arma_cfg [Writes the Server basic.cfg]
         """        
         cfg_dict = {
-        """print_arma_arma_cfg [test]
-        """
             "maxPacketSize_Sockets": self.maxPacketSize,
             "initBandwidth_Sockets": self.mbits_to_bytes(self.socket_int),
             "MinBandwidth_Sockets": self.mbits_to_bytes(self.socket_min),
@@ -42,7 +37,7 @@ class BasicCFG:
         arma_cfg = f"""
 class sockets
 {{
-    maxPacketSize = {cfg_dict.get("maxPacketSize_Sockets")}
+    1maxPacketSize = {cfg_dict.get("maxPacketSize_Sockets")};
     initBandwidth = {cfg_dict.get("initBandwidth_Sockets")}; //{int(cfg_dict.get("initBandwidth_Sockets" ) / 125000)} mb/s
     MinBandwidth =  {cfg_dict.get("MinBandwidth_Sockets")}; //(64 kbit) 
     MaxBandwidth =  {cfg_dict.get("MaxBandwidth_Sockets")}; //(16 Mbit) 250x minBandwith  
