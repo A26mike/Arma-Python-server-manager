@@ -29,6 +29,8 @@ class BasicCFG:
         """print_arma_arma_cfg [Writes the Server basic.cfg]
         """        
         cfg_dict = {
+        """print_arma_arma_cfg [test]
+        """
             "maxPacketSize_Sockets": self.maxPacketSize,
             "initBandwidth_Sockets": self.mbits_to_bytes(self.socket_int),
             "MinBandwidth_Sockets": self.mbits_to_bytes(self.socket_min),
@@ -41,7 +43,7 @@ class BasicCFG:
 class sockets
 {{
     maxPacketSize = {cfg_dict.get("maxPacketSize_Sockets")}
-    initBandwidth = {cfg_dict.get("initBandwidth")}; // {int(cfg_dict.get("initBandwidth")) / 125000 }
+    initBandwidth = {cfg_dict.get("initBandwidth_Sockets")}; //{int(cfg_dict.get("initBandwidth_Sockets" ) / 125000)} mb/s
     MinBandwidth =  {cfg_dict.get("MinBandwidth_Sockets")}; //(64 kbit) 
     MaxBandwidth =  {cfg_dict.get("MaxBandwidth_Sockets")}; //(16 Mbit) 250x minBandwith  
 }};
