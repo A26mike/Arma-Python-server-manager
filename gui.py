@@ -11,7 +11,7 @@ class Checkbar(Frame):
    def state(self):
       return map((lambda var: var.get()), self.vars)
 if __name__ == '__main__':
-   root = Tk()
+   root = Tk() 
    lng = Checkbar(root, ['Python', 'Ruby', 'Perl', 'C++'])
    tgl = Checkbar(root, ['English','German'])
    lng.pack(side=TOP,  fill=X)
