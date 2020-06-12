@@ -35,7 +35,7 @@ cb2 = Checkbutton(tab1, text="bandwidthAlg=2", command=placeholer)
 lb1 = Label(tab1,text ='Port')
 lb2 = Label(tab1,text ='PID File name')
 lb3 = Label(tab1,text ='Ranking')
-lb4 = Label(tab1,text ='netlog')
+lb4 = Label(tab1,text ='Netlog')
 lb5 = Label(tab1,text ='Basic cfg')
 lb6 = Label(tab1,text ='Server Config')
 
@@ -63,7 +63,32 @@ ent4.grid(column=1, row=6, pady=10)
 ent5.grid(column=1, row=7, pady=10)
 ent6.grid(column=1, row=8, pady=10)
 
+#TODO fix Basic CFG generator 
 
+
+t3lb1 = Label(tab3,text ='Max Packet size')
+t3lb2 = Label(tab3,text ='Upload Speed in Mb/s')
+t3lb3 = Label(tab3,text ='Intial Bandwitdth')
+t3lb4 = Label(tab3,text ='Slowest Players Download')
+
+
+t3ent1= Entry(tab3)
+t3ent2= Entry(tab3)
+t3ent3= Entry(tab3)
+t3ent4= Entry(tab3)
+
+
+
+t3lb1.grid(column=0, row=3, pady=10)
+t3lb2.grid(column=0, row=4 , pady=10)
+t3lb3.grid(column=0, row=5, pady=10)
+t3lb4.grid(column=0, row=6, pady=10)
+
+
+t3ent1.grid(column=1, row=3, pady=10)
+t3ent2.grid(column=1, row=4, pady=10)
+t3ent3.grid(column=1, row=5, pady=10)
+t3ent4.grid(column=1, row=6, pady=10)
 
 
 
