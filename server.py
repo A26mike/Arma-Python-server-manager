@@ -39,7 +39,7 @@ def placeholder():
 tab_control.add(tab1, text='Start up\n Parameters')
 tab_control.add(tab2, text='Server\nConfig')
 tab_control.add(tab3, text='Basic\nConfig')
-tab_control.add(tab4, text='Network\n Monitor')
+tab_control.add(tab4, text='Arma 3\n Profile')
 
 # create layout for tab 1
 # TODO tab 1 (Start up/n Parameters)
@@ -109,6 +109,86 @@ tab3_ent4.grid(column=1, row=6, pady=10)
 tab3_ent4.insert(0, "1")
 
 tab_control.pack(expand=1, fill='both')
+
+#tab4_list box
+#	/* Situational awareness */
+tab4_lb1 = Label(tab4, text='Group Indicators')
+tab4_lb2 = Label(tab4, text='Friendly Tags')
+tab4_lb3 = Label(tab4, text='Enemy Tags')
+tab4_lb4 = Label(tab4, text='Detected Mines')
+tab4_lb5 = Label(tab4, text='Commands')
+tab4_lb6 = Label(tab4, text='Waypoints')
+tab4_lb7 = Label(tab4, text='Tactical Ping')
+#/* Personal awareness */
+tab4_lb8 = Label(tab4, text='Weapon Info')
+tab4_lb9 = Label(tab4, text='Stance Indicator')
+tab4_lb10 = Label(tab4, text='Stamina Bar')
+tab4_lb11 = Label(tab4, text='Weapon Crosshair')
+tab4_lb12 = Label(tab4, text='VisionAid')
+
+#/* View */
+tab4_lb13 = Label(tab4, text='Third Person View')
+tab4_lb14 = Label(tab4, text='Camera Shake')
+#/* Multiplayer */
+
+tab4_lb15 = Label(tab4, text='Score Table')
+tab4_lb16 = Label(tab4, text='Death Messages')
+tab4_lb17 = Label(tab4, text='vonID')
+#/* Misc */
+tab4_lb18 = Label(tab4, text='Map Content')
+tab4_lb19 = Label(tab4, text='Auto Report')
+tab4_lb20 = Label(tab4, text='Multiple Saves')
+
+
+string = StringVar()
+tab4_opm1 = ttk.OptionMenu(tab4, string,
+                              "Never", "Limited Distance", "Always" )
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=1, pady=10)
+
+tab4_ent1 = Entry(tab4)
+tab4_ent1.insert(0, "2302")
+tab4_ent2 = Entry(tab4)
+tab4_ent3 = Entry(tab4)
+tab4_ent4 = Entry(tab4)
+tab4_ent5 = Entry(tab4)
+tab4_ent5.insert(0, "basic.cfg")
+tab4_ent6 = Entry(tab4)
+tab4_ent6.insert(0, "server.cfg")
+
+
+#	/* Situational awareness */
+tab4_lb1.grid(column=0, row=1, pady=10)
+tab4_lb2.grid(column=0, row=2, pady=10)
+tab4_lb3.grid(column=0, row=3, pady=10)
+tab4_lb4.grid(column=0, row=4, pady=10)
+tab4_lb5.grid(column=0, row=5, pady=10)
+tab4_lb6.grid(column=0, row=6, pady=10)
+tab4_lb7.grid(column=0, row=7, pady=10)
+#/* Personal awareness */
+tab4_lb8.grid(column=0, row=8, pady=10)
+tab4_lb10.grid(column=0, row=9, pady=10)
+tab4_lb11.grid(column=0, row=10, pady=10)
+tab4_lb12.grid(column=0, row=11, pady=10)
+#/* View */
+tab4_lb13.grid(column=3, row=1, pady=10)
+tab4_lb14.grid(column=3, row=2, pady=10)
+#/* Multiplayer */
+tab4_lb15.grid(column=3, row=3, pady=10)
+tab4_lb16.grid(column=3, row=4, pady=10)
+tab4_lb17.grid(column=3, row=5, pady=10)
+#/* Misc */
+tab4_lb18.grid(column=3, row=6, pady=10)
+tab4_lb19.grid(column=3, row=7, pady=10)
+tab4_lb19.grid(column=3, row=8, pady=10)
+
+
+tab4_ent1.grid(column=1, row=3, pady=10)
+tab4_ent2.grid(column=1, row=4, pady=10)
+tab4_ent3.grid(column=1, row=5, pady=10)
+tab4_ent4.grid(column=1, row=6, pady=10)
+tab4_ent5.grid(column=1, row=7, pady=10)
+tab4_ent6.grid(column=1, row=8, pady=10)
 
 window1.mainloop()
 root.mainloop()
