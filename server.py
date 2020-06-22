@@ -11,10 +11,9 @@ def getdir():
     print(window1.filename)
 
 
-
 root = Tk()
 window1 = root
-#style css
+# style css
 style = ttk.Style()
 current_theme = style.theme_use()
 style.theme_settings(current_theme, {"TNotebook.Tab": {"configure": {"padding": [40, 0]}}})
@@ -110,7 +109,7 @@ tab3_ent4.insert(0, "1")
 
 tab_control.pack(expand=1, fill='both')
 
-#tab4_list box
+# tab4_list box
 #	/* Situational awareness */
 tab4_lb1 = Label(tab4, text='Group Indicators')
 tab4_lb2 = Label(tab4, text='Friendly Tags')
@@ -119,43 +118,114 @@ tab4_lb4 = Label(tab4, text='Detected Mines')
 tab4_lb5 = Label(tab4, text='Commands')
 tab4_lb6 = Label(tab4, text='Waypoints')
 tab4_lb7 = Label(tab4, text='Tactical Ping')
-#/* Personal awareness */
+# /* Personal awareness */
 tab4_lb8 = Label(tab4, text='Weapon Info')
 tab4_lb9 = Label(tab4, text='Stance Indicator')
 tab4_lb10 = Label(tab4, text='Stamina Bar')
 tab4_lb11 = Label(tab4, text='Weapon Crosshair')
 tab4_lb12 = Label(tab4, text='VisionAid')
 
-#/* View */
+# /* View */
 tab4_lb13 = Label(tab4, text='Third Person View')
 tab4_lb14 = Label(tab4, text='Camera Shake')
-#/* Multiplayer */
+# /* Multiplayer */
 
 tab4_lb15 = Label(tab4, text='Score Table')
 tab4_lb16 = Label(tab4, text='Death Messages')
 tab4_lb17 = Label(tab4, text='vonID')
-#/* Misc */
+# /* Misc */
 tab4_lb18 = Label(tab4, text='Map Content')
 tab4_lb19 = Label(tab4, text='Auto Report')
 tab4_lb20 = Label(tab4, text='Multiple Saves')
 
+# Group Indicators
+string1 = StringVar()
+string2 = StringVar()
+string3 = StringVar()
+string4 = StringVar()
+string5 = StringVar()
+string6 = StringVar()
+string7 = StringVar()
+string8 = StringVar()
+string9 = StringVar()
+string10 = StringVar()
+string11 = StringVar()
 
-string = StringVar()
-tab4_opm1 = ttk.OptionMenu(tab4, string,
-                              "Never", "Limited Distance", "Always" )
+
+tab4_opm1 = ttk.OptionMenu(tab4, string1,
+                           "Never", "Limited Distance", "Always")
 tab4_opm1.configure(width=10)
 tab4_opm1.grid(column=1, row=1, pady=10)
+# Friendly Tags
+tab4_opm1 = ttk.OptionMenu(tab4, string2,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=2, pady=10)
 
-tab4_ent1 = Entry(tab4)
-tab4_ent1.insert(0, "2302")
-tab4_ent2 = Entry(tab4)
-tab4_ent3 = Entry(tab4)
-tab4_ent4 = Entry(tab4)
-tab4_ent5 = Entry(tab4)
-tab4_ent5.insert(0, "basic.cfg")
-tab4_ent6 = Entry(tab4)
-tab4_ent6.insert(0, "server.cfg")
+# Enemy Tags
+tab4_opm1 = ttk.OptionMenu(tab4, string3,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=3, pady=10)
 
+# Detected Mines
+tab4_opm1 = ttk.OptionMenu(tab4, string4,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=4, pady=10)
+
+# Commands
+tab4_opm1 = ttk.OptionMenu(tab4, string5,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=5, pady=10)
+
+# Waypoints
+tab4_opm1 = ttk.OptionMenu(tab4, string6,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=6, pady=10)
+
+# Tactical ping
+tab4_opm1 = ttk.OptionMenu(tab4, string7,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=6, pady=10)
+
+# Weapon info
+tab4_opm1 = ttk.OptionMenu(tab4, string8,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=7, pady=10)
+
+# Stamina Bar
+tab4_opm1 = ttk.OptionMenu(tab4, string9,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=8, pady=10)
+
+# Weapon crosshair
+tab4_opm1 = ttk.OptionMenu(tab4, string10,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=9, pady=10)
+
+# Vission Aid
+tab4_opm1 = ttk.OptionMenu(tab4, string11,
+                           "Never", "Limited Distance", "Always")
+tab4_opm1.configure(width=10)
+tab4_opm1.grid(column=1, row=10, pady=10)
+
+
+# tab4_ent1 = Entry(tab4)
+# tab4_ent1.insert(0, "2302")
+# tab4_ent2 = Entry(tab4)
+# tab4_ent3 = Entry(tab4)
+# tab4_ent4 = Entry(tab4)
+# tab4_ent5 = Entry(tab4)
+# tab4_ent5.insert(0, "basic.cfg")
+# tab4_ent6 = Entry(tab4)
+# tab4_ent6.insert(0, "server.cfg")
 
 #	/* Situational awareness */
 tab4_lb1.grid(column=0, row=1, pady=10)
@@ -165,34 +235,33 @@ tab4_lb4.grid(column=0, row=4, pady=10)
 tab4_lb5.grid(column=0, row=5, pady=10)
 tab4_lb6.grid(column=0, row=6, pady=10)
 tab4_lb7.grid(column=0, row=7, pady=10)
-#/* Personal awareness */
+# /* Personal awareness */
 tab4_lb8.grid(column=0, row=8, pady=10)
 tab4_lb10.grid(column=0, row=9, pady=10)
 tab4_lb11.grid(column=0, row=10, pady=10)
 tab4_lb12.grid(column=0, row=11, pady=10)
-#/* View */
+# /* View */
 tab4_lb13.grid(column=3, row=1, pady=10)
 tab4_lb14.grid(column=3, row=2, pady=10)
-#/* Multiplayer */
+# /* Multiplayer */
 tab4_lb15.grid(column=3, row=3, pady=10)
 tab4_lb16.grid(column=3, row=4, pady=10)
 tab4_lb17.grid(column=3, row=5, pady=10)
-#/* Misc */
+# /* Misc */
 tab4_lb18.grid(column=3, row=6, pady=10)
 tab4_lb19.grid(column=3, row=7, pady=10)
 tab4_lb19.grid(column=3, row=8, pady=10)
 
+# tab4_ent1.grid(column=1, row=3, pady=10)
+# tab4_ent2.grid(column=1, row=4, pady=10)
+# tab4_ent3.grid(column=1, row=5, pady=10)
+# tab4_ent4.grid(column=1, row=6, pady=10)
+# tab4_ent5.grid(column=1, row=7, pady=10)
+# tab4_ent6.grid(column=1, row=8, pady=10)
 
-tab4_ent1.grid(column=1, row=3, pady=10)
-tab4_ent2.grid(column=1, row=4, pady=10)
-tab4_ent3.grid(column=1, row=5, pady=10)
-tab4_ent4.grid(column=1, row=6, pady=10)
-tab4_ent5.grid(column=1, row=7, pady=10)
-tab4_ent6.grid(column=1, row=8, pady=10)
 
 window1.mainloop()
 root.mainloop()
-
 
 server_1 = BasicCFG(200, 5, 1
                     # (input("What is the server's Max Upload speed in megabit/s: \n ")),
